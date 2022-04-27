@@ -1,3 +1,4 @@
+![example workflow](https://github.com/Asd-Aurora-Vanchiglia/AuroraVanchglia-website-backend/actions/workflows/maven.yml/badge.svg)
 # Aurora Vanchiglia Website backend
 This project is intended to be the backend of website of the ASD Aurora Vanchiglia.
 
