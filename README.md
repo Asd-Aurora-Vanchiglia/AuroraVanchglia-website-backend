@@ -1,4 +1,5 @@
-![example workflow](https://github.com/Asd-Aurora-Vanchiglia/AuroraVanchglia-website-backend/actions/workflows/maven.yml/badge.svg)
+![workflow](https://github.com/Asd-Aurora-Vanchiglia/AuroraVanchglia-website-backend/actions/workflows/maven.yml/badge.svg)
+ [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 # Aurora Vanchiglia Website backend
 This project is intended to be the backend of website of the ASD Aurora Vanchiglia.
 
@@ -17,3 +18,5 @@ With running project:
 
 * Swagger UI: http://localhost:8080/swagger-ui.html
 * Swagger Json: http://localhost:8080/v3/api-docs
+
+
