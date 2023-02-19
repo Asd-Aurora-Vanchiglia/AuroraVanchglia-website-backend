@@ -29,6 +29,16 @@ public class ArticleService {
         return savedArticle;
     }
 
+    public Article updateImage(Image image, UUID articleId){
+        Article foundArticle = repo.findById(articleId).orElseThrow(() -> new ArticleNotFound(articleId));
+        
+        Image savedImage = imageService.storeImage(image);
+        foundArticle.setCoverImage(savedImage);
+
+        Article savedArticle = repo.save(foundArticle);
+        return savedArticle;
+    }
+
     public List<Article> getAllArticles() {
         return repo.findAll();
     }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @RestController
@@ -67,6 +68,16 @@ public class ArticleController {
         Article articleToSave = mapper.map(articleDto);
 
         Article savedArticle = service.save(articleToSave);
+        
+        ArticleViewDto transformedDto = mapper.map(savedArticle);
+        
+        return transformedDto;
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(value = "{id}/set-image", produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    public ArticleViewDto updateImage(MultipartFile image, @PathVariable UUID id) {
+        Article savedArticle = service.updateImage(imageMapper.map(image), id);
         
         ArticleViewDto transformedDto = mapper.map(savedArticle);
         

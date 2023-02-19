@@ -20,7 +20,6 @@ import net.bytebuddy.dynamic.DynamicType.Builder.MethodDefinition.Implementation
     unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface ArticleMapper {
 
-    @Mapping(target = "coverImage.id", source = "coverImageId" )
     @Mapping(target = "creationDateTime", expression  = "java( LocalDateTime.now() )")
     Article map (ArticleCreationDto articleDto);
 

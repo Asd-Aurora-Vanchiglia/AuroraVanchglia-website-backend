@@ -20,11 +20,11 @@ public class Article {
 
     @Id
     @GeneratedValue
-    private UUID id;
-    private String title;
-    private String content;
-    private LocalDateTime creationDateTime;
-    private LocalDateTime updateDateTime;
+    protected UUID id;
+    protected String title;
+    protected String content;
+    protected LocalDateTime creationDateTime;
+    protected LocalDateTime updateDateTime;
     @OneToOne
-    private Image coverImage;
+    protected Image coverImage;
 }
