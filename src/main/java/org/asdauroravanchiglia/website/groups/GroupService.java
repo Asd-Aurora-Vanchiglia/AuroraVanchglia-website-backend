@@ -30,7 +30,7 @@ public class GroupService {
 
 
     public Group findByTitle(String title) {
-        return repo.findByTitle(title.strip().replaceAll("-", " ").toLowerCase())
+        return repo.findByTitle(title)
         .orElseThrow( () -> GroupNotFound.notFoundByTitle(title));
     }
     

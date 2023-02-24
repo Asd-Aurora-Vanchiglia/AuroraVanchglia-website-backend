@@ -45,13 +45,13 @@ public class GroupController {
     }
 
     @GetMapping("{id}")
-    public GroupViewDto getById(@RequestParam UUID id){
+    public GroupViewDto getById(@PathVariable UUID id){
         Group group = service.findById(id);
         return mapper.map(group);
     }
 
     @GetMapping("withTitle/{title}")
-    public GroupViewDto getById(@RequestParam String  title){
+    public GroupViewDto getByTitle(@PathVariable String  title){
         Group group = service.findByTitle(title);
         return mapper.map(group);
     }
@@ -65,8 +65,8 @@ public class GroupController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(value = "{id}/set-image", produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public GroupViewDto updateImage(MultipartFile image, @PathVariable UUID id) {
+    @PostMapping(value = "{id}/set-image", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public GroupViewDto updateImage(@RequestParam("image") MultipartFile image, @PathVariable UUID id) {
         Group group = service.updateCoverImage(id, imageMapper.map(image));
         
         GroupViewDto transformedDto = mapper.map(group);

@@ -23,6 +23,7 @@ public interface GroupMapper {
     Group map(GroupCreationDto dto);
 
     @Mapping(target = "coverImageId", source = "coverImage.id")
+    @Mapping(target = "titleLinkParsed", expression="java(entity.getTitle().toLowerCase().trim().replaceAll(\" \", \"-\"))")
     GroupViewDto map(Group entity);
 
     List<GroupViewDto> map(List<Group> entities);

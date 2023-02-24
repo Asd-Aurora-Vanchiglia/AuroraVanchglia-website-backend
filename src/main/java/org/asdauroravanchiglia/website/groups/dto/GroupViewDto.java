@@ -13,6 +13,7 @@ public class GroupViewDto {
     private UUID id;
 
     private String title;
+    private String titleLinkParsed;
 
     private String description;
     private Boolean onMenu;
