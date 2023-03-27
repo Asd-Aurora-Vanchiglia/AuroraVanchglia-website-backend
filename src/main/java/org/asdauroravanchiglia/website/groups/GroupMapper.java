@@ -20,8 +20,11 @@ import org.mapstruct.ReportingPolicy;
     unmappedSourcePolicy = ReportingPolicy.IGNORE, uses = ContactMapper.class)
 public interface GroupMapper {
 
+    @Mapping(target = "logo", source = "icon")
     Group map(GroupCreationDto dto);
 
+
+    @Mapping(target = "icon", source = "logo")
     @Mapping(target = "coverImageId", source = "coverImage.id")
     @Mapping(target = "titleLinkParsed", expression="java(entity.getTitle().toLowerCase().trim().replaceAll(\" \", \"-\"))")
     GroupViewDto map(Group entity);

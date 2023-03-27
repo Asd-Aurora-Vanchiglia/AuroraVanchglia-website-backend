@@ -18,6 +18,8 @@ public class GroupViewDto {
     private String description;
     private Boolean onMenu;
 
+    private String icon;
+
     private UUID coverImageId;
 
     private List<Contact> contacts;

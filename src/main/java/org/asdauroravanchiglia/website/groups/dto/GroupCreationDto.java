@@ -12,6 +12,7 @@ public class GroupCreationDto {
 
     private String description;
     private Boolean onMenu;
+    private String icon;
 
     private List<ContactCreationDto> contacts;
 }
