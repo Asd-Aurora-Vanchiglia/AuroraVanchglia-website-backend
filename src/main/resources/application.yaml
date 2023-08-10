@@ -1,0 +1,18 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: ${DB_URL}
+    driverClassName: org.postgresql.Driver
+    username: ${DB_USR}
+    password: ${DB_PWD}
+    # hikari:
+    #   minimumIdle: 1
+    #   maximumPoolSize: 10
+    #   connectionTestQuery: SELECT 1
+  jpa:
+   hibernate:
+      ddl-auto: ${DB_DDL:none}
+      show-sql: true
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
