@@ -24,6 +24,7 @@ public class GroupService {
     @Autowired
     ContactRepository contactRepo;
 
+
     public List<Group> findAll(){
         return repo.findAll();
     }
@@ -38,11 +39,14 @@ public class GroupService {
         return repo.findById(id).orElseThrow(() -> GroupNotFound.notFoundById(id));
     }
 
-    public Group createGroup(Group groupToSave){
-        if(null != groupToSave.getContacts() && groupToSave.getContacts().size() != 0){
-            List<Contact> savedContacts = contactRepo.saveAll(groupToSave.getContacts());
-            groupToSave.setContacts(savedContacts);
+    public Group createGroup(Group groupToSave) {
+        if(groupToSave.getContacts() != null && !groupToSave.getContacts().isEmpty()){
+            groupToSave.setContacts(contactRepo.saveAll(groupToSave.getContacts()));
         }
+        return repo.save(groupToSave);
+    }
+
+    public Group updateGroup(Group groupToSave) {
         return repo.save(groupToSave);
     }
 

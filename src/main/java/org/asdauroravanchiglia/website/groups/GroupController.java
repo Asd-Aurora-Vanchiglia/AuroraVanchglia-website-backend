@@ -5,13 +5,16 @@ import java.util.UUID;
 
 import org.asdauroravanchiglia.website.common.ListWrapper;
 import org.asdauroravanchiglia.website.groups.dto.GroupCreationDto;
+import org.asdauroravanchiglia.website.groups.dto.GroupUpdateDto;
 import org.asdauroravanchiglia.website.groups.dto.GroupViewDto;
 import org.asdauroravanchiglia.website.image.ImageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -61,6 +64,14 @@ public class GroupController {
     public GroupViewDto createGroup(@RequestBody GroupCreationDto creationRequest){
         Group group = service.createGroup(mapper.map(creationRequest));
 
+        return mapper.map(group);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PatchMapping("{id}")
+    public GroupViewDto updateGroup(@PathVariable UUID id,@RequestBody GroupUpdateDto updateRequest){
+        Group groupToUpdate = mapper.patch(service.findById(id), updateRequest);
+        Group group = service.updateGroup(groupToUpdate);
         return mapper.map(group);
     }
 

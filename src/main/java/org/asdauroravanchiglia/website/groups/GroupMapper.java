@@ -9,9 +9,11 @@ import java.util.stream.Stream;
 
 import org.asdauroravanchiglia.website.contact.ContactMapper;
 import org.asdauroravanchiglia.website.groups.dto.GroupCreationDto;
+import org.asdauroravanchiglia.website.groups.dto.GroupUpdateDto;
 import org.asdauroravanchiglia.website.groups.dto.GroupViewDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.ReportingPolicy;
 
@@ -28,6 +30,8 @@ public interface GroupMapper {
     @Mapping(target = "coverImageId", source = "coverImage.id")
     @Mapping(target = "titleLinkParsed", expression="java(entity.getTitle().toLowerCase().trim().replaceAll(\" \", \"-\"))")
     GroupViewDto map(Group entity);
+
+    Group patch(@MappingTarget Group olGroup, GroupUpdateDto dto);
 
     List<GroupViewDto> map(List<Group> entities);
 

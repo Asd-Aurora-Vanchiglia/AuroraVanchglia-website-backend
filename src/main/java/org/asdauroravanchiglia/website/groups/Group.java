@@ -3,8 +3,10 @@ package org.asdauroravanchiglia.website.groups;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -29,11 +31,13 @@ public class Group {
     @Column(unique = true)
     private String title;
 
+    @Column(length = 100000)
     private String description;
     private Boolean onMenu;
     private String  logo;
 
     @OneToOne
+    @Basic(fetch=FetchType.LAZY, optional=true)
     private Image coverImage; 
 
     @OneToMany
