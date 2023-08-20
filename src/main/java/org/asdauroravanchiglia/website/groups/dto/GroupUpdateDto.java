@@ -5,6 +5,9 @@ import java.util.UUID;
 
 import org.asdauroravanchiglia.website.contact.dto.ContactCreationDto;
 
+import lombok.Data;
+
+@Data
 public class GroupUpdateDto {
     private String title;
 
